@@ -1,4 +1,5 @@
 [![Clojars Project](https://img.shields.io/clojars/v/jp.xcoo/deps-deploy.svg)](https://clojars.org/jp.xcoo/deps-deploy)
+
 # deps-deploy
 
 A Clojure library to deploy your stuff to clojars with `clj` or `clojure`. It's a very thin wrapper around
@@ -17,6 +18,7 @@ To deploy to Clojars, simply merge
                        :sign-releases? true
                        :artifact "deps-deploy.jar"}}}
 ```
+
 into your `deps.edn`, have a `pom.xml` handy (you can generate one with `clj -Spom`), and deploy with
 
 ```sh
@@ -30,6 +32,7 @@ It is also possible to override the default Clojars URL by supplying your own. F
 ```sh
 $ env CLOJARS_URL=https://internal/repository/maven-releases CLOJARS_USERNAME=username CLOJARS_PASSWORD=password clj -A:deploy
 ```
+
 This facilitates deploying artefacts to an internal repository - perhaps a proxy service that is running locally that is used
 to hold private JARs etc...
 
@@ -54,6 +57,7 @@ To deploy to private s3 buckets, you first need to specify the `:repository` key
 ```clj
 :exec-args {:repository {"releases" {:url "s3p://my/bucket/"}}}
 ```
+
 Then, when deploying, you need to provide credentials which is done either by:
 
 1. setting the env vars: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
@@ -67,6 +71,7 @@ or
 aws_access_key_id = AKIAXXXXX
 aws_secret_access_key = SECRET_KEY
 ```
+
 For more details see [s3-wagon-provider](https://github.com/s3-wagon-private/s3-wagon-private#aws-credential-providers) and if you need to know how to [configure an S3 bucket see here](https://github.com/s3-wagon-private/s3-wagon-private#aws-policy).
 
 ### A note on Clojars tokens
@@ -79,6 +84,7 @@ Long story short, just go find yourself a token and use it in lieu of your passw
 ## Install locally
 
 `deps-deploy` also supports installing to your local `.m2` repo, by invoking `install` instead of `deploy`:
+
 ```clojure
 {:install {:extra-deps {jp.xcoo/deps-deploy {:mvn/version "RELEASE"}}
            :exec-fn deps-deploy.deps-deploy/deploy
@@ -89,12 +95,14 @@ Long story short, just go find yourself a token and use it in lieu of your passw
 ## Signing
 
 If you want to have your artifacts signed, add `"true"` as the last element of the `:main-opts` vector like so:
+
 ```clojure
 :main-opts ["-m" "deps-deploy.deps-deploy" "install"
             "path/to/my.jar" "true"]
 ```
 
 If you don't want to use the default key for signing, you can specify the key id:
+
 ```clojure
 :main-opts ["-m" "deps-deploy.deps-deploy" "install"
             "path/to/my.jar" "true" "1C33430999AA1C3C243A302689CACBAD9979E3C5"]
@@ -104,5 +112,6 @@ If you don't want to use the default key for signing, you can specify the key id
 
 Copyright © 2018-2021 Erik Assum
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Copyright © 2025 [Xcoo, Inc.](https://xcoo.jp/)
+
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
