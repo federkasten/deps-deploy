@@ -16,7 +16,7 @@
 
            :mvn/artifact-id deps-deploy
            :mvn/group-id    jp.xcoo
-           :mvn/version     "0.3.0-SNAPSHOT"
+           :mvn/version     "0.3.0"
            :jar/file-name   "deps-deploy.jar"
 
            :depstar {:replace-deps
