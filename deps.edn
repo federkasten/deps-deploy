@@ -28,13 +28,13 @@
                                  :version     :mvn/version
                                  :sync-pom true}}
 
-           :deploy {:extra-deps {jp.xcoo/deps-deploy {:mvn/version "0.3.0-SNAPSHOT"}}
+           :deploy {:extra-deps {jp.xcoo/deps-deploy {:mvn/version "0.3.0"}}
                     :exec-fn deps-deploy.deps-deploy/deploy
                     :exec-args {:installer :remote
                                 :sign-releases? true
                                 :artifact :jar/file-name}}
 
-           :install {:extra-deps {jp.xcoo/deps-deploy {:mvn/version "0.3.0-SNAPSHOT"}}
+           :install {:extra-deps {jp.xcoo/deps-deploy {:mvn/version "0.3.0"}}
                      :exec-fn deps-deploy.deps-deploy/deploy
                      :exec-args {:installer :local
                                  :artifact :jar/file-name}}
