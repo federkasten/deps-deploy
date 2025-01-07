@@ -69,7 +69,8 @@ flycheck_*.el
 /checkouts
 pom.xml
 pom.xml.asc
-*.jar
+*.pom.asc
+*.jar.asc
 *.class
 /.cpcache
 /.lein-*
